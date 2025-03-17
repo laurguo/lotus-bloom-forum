@@ -1,9 +1,29 @@
 import { withMiddlewareAuthRequired } from "@auth0/nextjs-auth0/edge";
 import { NextResponse } from "next/server";
 
+/*
+ * Middleware in Next.js acts as a layer that runs before requests reach their destination routes.
+ * This middleware specifically handles authentication using Auth0:
+ *
+ * 1. withMiddlewareAuthRequired: This is an Auth0 wrapper that ensures users are authenticated
+ *    before accessing protected routes. If a user isn't logged in, they'll be redirected to
+ *    the Auth0 login page.
+ *
+ * 2. Protected Routes (see matcher config):
+ *    - /edit-roles: Managing user roles
+ *    - /all-user-roles: Viewing all user roles
+ *    - /site-selection: Site selection page
+ *    - /:site/:post_id*: All dynamic post routes
+ *    - /:site: All site-specific pages
+ *
+ * Any attempt to access these routes without authentication will trigger the Auth0
+ * authentication flow. After successful login, users will be redirected back to
+ * their intended destination.
+ *
+ * IMPORTANT: This means that if you want to add additional routes that are not protected, you need to add them to the matcher array.
+ */
+
 export default withMiddlewareAuthRequired(async function middleware(req) {
-  const url = req.nextUrl.pathname;
-  console.log("Middleware running for path:", url);
   return NextResponse.next();
 });
 
@@ -13,7 +33,7 @@ export const config = {
     "/edit-roles",
     "/all-user-roles",
     "/site-selection",
-    "/:site/:post_id*",
-    "/:site",
+    "/site/:site/:post_id*",
+    "/site/:site",
   ],
 };

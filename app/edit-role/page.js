@@ -6,17 +6,17 @@ import { assignRole } from "../actions/role-actions";
 import styles from "./EditRoles.module.css";
 
 /*
-This page allows a user to edit their roles.
-Currently, users can only add role.
+ * This page allows a user to edit their roles.
+ * Currently, users can only add role.
+ *
+ * TODO:
+ * - Display the current additional role a user has, if any (Family Navigator or Admin)
+ *    - next to the role, add a 'x' icon that allows the user to remove the role.
+ *    - you will need to make a server action to remove the role. (in actions/role-actions.js)
+ * - Add logic to make sure the user can only have one additional role at a time.
+ *    - if the user already has an additional role, do not display the select box.
+ */
 
-TODO:
-- Display the current additional role a user has, if any (Family Navigator or Admin)
-  - next to the role, add a 'x' icon that allows the user to remove the role.
-  - you will need to make a server action to remove the role. (in actions/role-actions.js)
-
-- Add logic to make sure the user can only have one additional role at a time.
-  - if the user already has an additional role, do not display the select box.
-*/
 export default function EditRoles() {
   const { user, isLoading } = useUser();
   const [selectedRole, setSelectedRole] = useState("");

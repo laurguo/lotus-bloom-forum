@@ -2,10 +2,11 @@
 
 import { usePathname } from "next/navigation";
 
-/* 
-TODO:
-- Implement the actual drawer component
-*/
+/*
+ * TODO:
+ * - Implement the actual drawer component
+ */
+
 export default function DrawerWrapper() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
