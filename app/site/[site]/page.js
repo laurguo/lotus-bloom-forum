@@ -6,6 +6,9 @@
  *  - this can maybe be through a separate page (eg. /:site/new)
  */
 
+import DiscussionBoardPost from "@/app/components/DiscussionBoardPost";
+import styles from "./page.module.css";
+
 export default async function SitePage({ params }) {
   const p = await params;
   const site = p.site;
@@ -13,8 +16,20 @@ export default async function SitePage({ params }) {
   return (
     <div>
       <h1>Site: {site}</h1>
-      <div>
-        <p>This is the page for {site}</p>
+      <div className={styles.wholePage}>
+        <div className={styles.sidebar}>
+          <button className={styles.newPostButton}>New Post</button>
+          <div className={styles.navButtons}>
+            <button className={styles.navButton}>other site 1</button>
+            <button className={styles.navButton}>other site 2</button>
+            <button className={styles.navButton}>other site 3</button>
+          </div>
+        </div>
+        <div className={styles.postList}>
+          <DiscussionBoardPost />
+          <DiscussionBoardPost />
+          <DiscussionBoardPost />
+        </div>
       </div>
     </div>
   );
