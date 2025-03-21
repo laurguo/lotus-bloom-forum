@@ -1,0 +1,36 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexContainer {
+  display: flex;
+  gap: 10;
+  flex-direction: column;
+}
+.back_button {
+  display: flex;
+  max-height: 100px;
+  flex-direction: row;
+  gap: 10;
+  background-color: blueviolet;
+  border-radius: 50;
+  padding: 5px;
+}
+.back_button img {
+  max-height: 100%;
+  width: auto;
+}
+
+.back_button h1 {
+  position: relative;
+  top: 7;
+}
+
+.userTag {
+  display: flex;
+  flex-direction: row;
+}
+
+.userTag h1 {
+}

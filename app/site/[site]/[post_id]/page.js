@@ -6,6 +6,9 @@
  * 2b. Add a way to delete and edit a comment
  * 2c. Add a way to delete and edit a post (only for a user who made the post (worry about the functionality of this later once we do backend))
  */
+import React from "react";
+import Image from "next/image";
+import styles from "./page.module.css";
 
 export default async function PostPage({ params }) {
   const p = await params;
@@ -13,12 +16,49 @@ export default async function PostPage({ params }) {
   const post_id = p.post_id;
 
   return (
-    <div>
-      <h1>Post ID: {post_id}</h1>
-      <div>
-        <p>
-          This is the page for {post_id} on {site}
-        </p>
+    <div className={styles.pageContainer}>
+      <div className={styles.back_button}>
+        <Image src={"/back_button.svg"} alt="Back" width={40} height={40} />
+        <h1>Back</h1>
+      </div>
+
+      <div className={styles.flexContainer}>
+        <div className={styles.userTag}>
+          <Image
+            src={"/default_profile.svg"}
+            alt="Back"
+            width={40}
+            height={40}
+          />
+          <h1>Deven Mital </h1>
+          <h2> March 1, 2025 </h2>
+        </div>
+
+        <div className={styles.Textbox}>
+          <h1>Welcome to Lotus Bloom's Website</h1>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+          <img src={"random image"} />
+        </div>
+
+        <div className={styles.comments}>
+          <div id={styles.box1}>
+            <p>Comment box 1</p>
+          </div>
+          <div id={styles.box2}>
+            <p>Comment box 2</p>
+          </div>
+          <div id={styles.box3}>
+            <p>Comment box 3</p>
+          </div>
+        </div>
       </div>
     </div>
   );
