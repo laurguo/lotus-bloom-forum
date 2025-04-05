@@ -1,36 +1,119 @@
+/* page.module.css */
 .pageContainer {
+  /* Full-height, vertical layout, gradient background */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* Example purple-to-blue gradient */
+  background: linear-gradient(180deg, #c9a7f5 0%, #a1d5f5 100%);
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-.flexContainer {
-  display: flex;
-  gap: 10;
-  flex-direction: column;
-}
+/* Back button area */
 .back_button {
   display: flex;
-  max-height: 100px;
-  flex-direction: row;
-  gap: 10;
-  background-color: blueviolet;
-  border-radius: 50;
-  padding: 5px;
-}
-.back_button img {
-  max-height: 100%;
-  width: auto;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .back_button h1 {
-  position: relative;
-  top: 7;
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #5c4e7a; /* A slightly darker purple for contrast */
 }
 
+/* Container that holds userTag, Textbox, and comments side by side */
+.flexContainer {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+/* User tag / profile area */
 .userTag {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1ebfa; /* Light purple background */
+  border: 1px solid #d1c9e8;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 180px;
+  min-width: 180px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .userTag h1 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1rem;
+  color: #4a3d67;
+}
+
+.userTag h2 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7f7a94;
+}
+
+/* Main post content box */
+.Textbox {
+  flex: 1;
+  background-color: #ffffff;
+  border: 2px solid #c1a4e4; /* Pastel purple border */
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Textbox h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #5c4e7a;
+}
+
+.Textbox p {
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+.Textbox img {
+  max-width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* Comments section */
+.comments {
+  width: 250px;
+  background-color: #fdfaff;
+  border: 1px solid #e8dff6;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual comment boxes */
+#box1,
+#box2,
+#box3 {
+  background-color: #f1ebfa;
+  border: 1px solid #d1c9e8;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+#box1 p,
+#box2 p,
+#box3 p {
+  margin: 0;
+  color: #4a3d67;
 }
