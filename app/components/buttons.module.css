@@ -1,7 +1,7 @@
 .loginButton {
   padding: 8px 16px;
-  background-color: #c79bbf;
-  color: white;
+  background-color: #c69cc0;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 4px;
   font-size: 16px;
@@ -10,7 +10,7 @@
 }
 
 .loginButton:hover {
-  background-color: #c79bbf;
+  background-color: #784692;
 }
 
 .logoutButton {
