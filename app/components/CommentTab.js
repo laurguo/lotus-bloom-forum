@@ -1,35 +1,74 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./CommentTab.module.css"; // Create this CSS module for styling
 
-export default function CommentBar() {
-  const [comment, setComment] = useState("");
+export default function CommentTab() {
+  const [comments, setComments] = useState([
+    {
+      id: 1,
+      author: "Deven Mital",
+      date: "March 1, 2025",
+      text: "This is the first comment.",
+    },
+    {
+      id: 2,
+      author: "Deven Mital",
+      date: "March 1, 2025",
+      text: "Another comment here!",
+    },
+  ]);
+  const [newComment, setNewComment] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await fetch("/api/comments", {
-      method: "POST",
-      body: JSON.stringify({ comment }),
-      headers: { "Content-Type": "application/json" },
-    });
-    setComment("");
+  const handleSubmit = () => {
+    if (newComment.trim() === "") return;
+
+    const newEntry = {
+      id: Date.now(),
+      author: "Deven Mital", // Hardcoded for now
+      date: new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+      text: newComment.trim(),
+    };
+
+    setComments([...comments, newEntry]);
+    setNewComment("");
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") handleSubmit();
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2">
-      <input
-        type="text"
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        placeholder="Write a comment..."
-        className="border rounded-lg px-4 py-2 w-full"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-      >
-        Post
-      </button>
-    </form>
+    <div className={styles.commentTabContainer}>
+      <h2 className={styles.header}>Comments</h2>
+      <div className={styles.allStuff}>
+        <div className={styles.commentsList}>
+          {comments.map((comment) => (
+            <div key={comment.id} className={styles.commentBox}>
+              <div className={styles.commentTag}>
+                <h3>{comment.author}</h3>
+                <h4>{comment.date}</h4>
+              </div>
+              <p>{comment.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.commentInput}>
+          <input
+            type="text"
+            placeholder="Write a comment..."
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            onKeyPress={handleKeyPress}
+          />
+          <button onClick={handleSubmit}>Post</button>
+        </div>
+      </div>
+    </div>
   );
 }

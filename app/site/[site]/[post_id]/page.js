@@ -9,7 +9,7 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
-import { useState } from "react";
+import CommentTab from "@/app/components/CommentTab";
 
 export default async function PostPage({ params }) {
   const p = await params;
@@ -24,10 +24,6 @@ export default async function PostPage({ params }) {
             <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
             <h1>Back</h1>
           </a>
-        </div>
-
-        <div className={styles.new_comment}>
-          <h1>New Comment</h1>
         </div>
       </div>
 
@@ -84,37 +80,7 @@ export default async function PostPage({ params }) {
           <img src={"random image"} />
         </div>
 
-        <div className={styles.comments}>
-          <div id={styles.box1}>
-            <div className={styles.commentTag}>
-              <h2>Deven Mital </h2>
-              <h2> March 1, 2025 </h2>
-            </div>
-            <p>
-              Comment box 1mpor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cLorem ipsum dolor sit amet,
-            </p>
-          </div>
-          <div id={styles.box2}>
-            <div className={styles.commentTag}>
-              <h2>Deven Mital </h2>
-              <h2> March 1, 2025 </h2>
-            </div>
-            <p>Comment box 2</p>
-          </div>
-          <div id={styles.box3}>
-            <div className={styles.commentTag}>
-              <h2>Deven Mital </h2>
-              <h2> March 1, 2025 </h2>
-            </div>
-            <p>
-              Comment box 3 veniam, quis nostrud exercit veniam, quis nostrud
-              exercit veniam, quis nostrud exercit
-            </p>
-          </div>
-        </div>
+        <CommentTab />
       </div>
     </div>
   );

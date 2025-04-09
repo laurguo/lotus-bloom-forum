@@ -1,0 +1,106 @@
+.commentTabContainer {
+  display: flex; /* Make this a flex container */
+  flex-direction: column;
+  background-color: #fdfaff;
+  border: 1px solid #e8dff6;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 100vh;
+  gap: 1rem;
+}
+
+.header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #5c4e7a;
+  margin-bottom: 0.5rem;
+}
+
+/* Scrollable comment list */
+.commentsList {
+  flex: 1;
+  max-height: 70vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Individual comment box */
+.commentBox {
+  display: flex;
+  flex-direction: column;
+  background-color: #f1ebfa;
+  border: 1px solid #d1c9e8;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+/* User & date row */
+.commentTag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commentTag h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4a3d67;
+}
+
+.commentTag h4 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7f7a94;
+}
+
+/* Comment text */
+.commentBox p {
+  margin: 0;
+  padding-top: 10px;
+  color: #4a3d67;
+}
+
+/* New comment input section */
+.commentInput {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  background-color: #f1ebfa;
+  border: 1px solid #d1c9e8;
+  border-radius: 6px;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.commentInput input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #c1a4e4;
+  border-radius: 4px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.commentInput button {
+  background-color: #c1a4e4;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.commentInput button:hover {
+  background-color: #a88ad2;
+}
+.allStuff {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
