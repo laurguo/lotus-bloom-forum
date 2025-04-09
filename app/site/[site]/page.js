@@ -7,10 +7,11 @@
  */
 
 import DiscussionBoardPost from "@/app/components/DiscussionBoardPost";
+import NewPostButton from "@/app/components/new-post-button";
 import styles from "./page.module.css";
 
 export default async function SitePage({ params }) {
-  const p = await params;
+  const p = params;
   const site = p.site;
 
   return (
@@ -18,7 +19,7 @@ export default async function SitePage({ params }) {
       <h1>Site: {site}</h1>
       <div className={styles.wholePage}>
         <div className={styles.sidebar}>
-          <button className={styles.newPostButton}>New Post</button>
+          <NewPostButton site={site} />
           <div className={styles.navButtons}>
             <button className={styles.navButton}>other site 1</button>
             <button className={styles.navButton}>other site 2</button>
@@ -26,9 +27,9 @@ export default async function SitePage({ params }) {
           </div>
         </div>
         <div className={styles.postList}>
-          <DiscussionBoardPost />
-          <DiscussionBoardPost />
-          <DiscussionBoardPost />
+          <DiscussionBoardPost site={site} />
+          <DiscussionBoardPost site={site} />
+          <DiscussionBoardPost site={site} />
         </div>
       </div>
     </div>

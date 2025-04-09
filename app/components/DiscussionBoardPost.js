@@ -1,17 +1,19 @@
+"use client";
 import styles from "./DiscussionBoardPost.module.css";
+import { useRouter } from "next/navigation";
 
-export default function DiscussionBoardPost() {
+export default function DiscussionBoardPost({ site }) {
+  const router = useRouter();
   return (
-    <div className={styles.post}>
-      <div>this is the profile pic</div>
-      <div>
-        <div>
-          <span>name of person</span>
-          <div>role tags</div>
-        </div>
-        <div>shortened content of the post</div>
+    <button
+      onClick={() => router.push(`/site/${site}/123`)}
+      className={styles.post}
+    >
+      <div className={styles.nameID}>
+        <div>name of person</div>
+        <div>role tags</div>
       </div>
-      <div>any images go here</div>
-    </div>
+      <div className={styles.postTitle}>title of the post</div>
+    </button>
   );
 }

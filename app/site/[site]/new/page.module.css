@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.formBox {
+  background-color: #f3e8ff; /* light purple */
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.posterName {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #7c4483; /* deep purple */
+}
+
+.titleInput,
+.contentInput {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.contentInput {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submitButton {
+  background-color: #8c4799; /* purple */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 9999px; /* fully rounded */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #a05bb3;
+}
