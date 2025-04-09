@@ -6,9 +6,10 @@
  * 2b. Add a way to delete and edit a comment
  * 2c. Add a way to delete and edit a post (only for a user who made the post (worry about the functionality of this later once we do backend))
  */
-import React from "react";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default async function PostPage({ params }) {
   const p = await params;
@@ -17,46 +18,101 @@ export default async function PostPage({ params }) {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.back_button}>
-        <Image src={"/back_button.svg"} alt="Back" width={40} height={40} />
-        <h1>Back</h1>
+      <div className={styles.links}>
+        <div className={styles.back_button}>
+          <a className={styles.backParent} href="/site-selection">
+            <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
+            <h1>Back</h1>
+          </a>
+        </div>
+
+        <div className={styles.new_comment}>
+          <h1>New Comment</h1>
+        </div>
       </div>
 
       <div className={styles.flexContainer}>
-        <div className={styles.userTag}>
-          <Image
-            src={"/default_profile.svg"}
-            alt="Back"
-            width={40}
-            height={40}
-          />
-          <h1>Deven Mital </h1>
-          <h2> March 1, 2025 </h2>
-        </div>
-
         <div className={styles.Textbox}>
-          <h1>Welcome to Lotus Bloom's Website</h1>
+          <div className={styles.userTag}>
+            <h1>Welcome to Lotus Blooms Website</h1>
+
+            <div className={styles.userStuff}>
+              <Image
+                src={"/default_profile.svg"}
+                alt="Back"
+                width={40}
+                height={40}
+              />
+              <div className={styles.userbox}>
+                <h1>Deven Mital </h1>
+                <h2> March 1, 2025 </h2>
+              </div>
+            </div>
+          </div>
+
           <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum. orem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum. orem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum. orem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum. orem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
           </p>
           <img src={"random image"} />
         </div>
 
         <div className={styles.comments}>
           <div id={styles.box1}>
-            <p>Comment box 1</p>
+            <div className={styles.commentTag}>
+              <h2>Deven Mital </h2>
+              <h2> March 1, 2025 </h2>
+            </div>
+            <p>
+              Comment box 1mpor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cLorem ipsum dolor sit amet,
+            </p>
           </div>
           <div id={styles.box2}>
+            <div className={styles.commentTag}>
+              <h2>Deven Mital </h2>
+              <h2> March 1, 2025 </h2>
+            </div>
             <p>Comment box 2</p>
           </div>
           <div id={styles.box3}>
-            <p>Comment box 3</p>
+            <div className={styles.commentTag}>
+              <h2>Deven Mital </h2>
+              <h2> March 1, 2025 </h2>
+            </div>
+            <p>
+              Comment box 3 veniam, quis nostrud exercit veniam, quis nostrud
+              exercit veniam, quis nostrud exercit
+            </p>
           </div>
         </div>
       </div>
