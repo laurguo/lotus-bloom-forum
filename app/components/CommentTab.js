@@ -59,12 +59,12 @@ export default function CommentTab() {
         </div>
 
         <div className={styles.commentInput}>
-          <input
-            type="text"
+          <textarea
+            className={styles.textarea}
             placeholder="Write a comment..."
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
           <button onClick={handleSubmit}>Post</button>
         </div>
