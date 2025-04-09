@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import LogoutButton from "../components/logout-button";
 import Link from "next/link";
-import LotusBloomHeader from "../components/lotusbloomheader";
+import LotusBloomHeader from "../components/header/lotusbloomheader";
 
 export default function SiteSelection() {
   return (

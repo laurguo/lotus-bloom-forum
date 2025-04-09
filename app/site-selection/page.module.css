@@ -1,6 +1,6 @@
 .page {
   min-height: 100svh;
-  padding: 80px;
+  padding: 50px;
   background: linear-gradient(to bottom, #ffffff, #36b0c8);
   font-family: var(--font-geist-sans);
   justify-items: center;
@@ -18,12 +18,36 @@
   background-color: #c69cc0;
   height: 250px;
   border-radius: 15px;
-  display: flex; /* Enables Flexbox layout */
-  align-items: center; /* Centers content vertically */
-  justify-content: center; /* Centers content horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   font-size: 1.5rem;
   padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    .selectionGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 40px;
+      max-width: 1400px;
+      padding: 50px;
+    }
+
+    .site {
+      background-color: #c69cc0;
+      height: 170px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 20px;
+    }
+  }
 }
 
 .title {
