@@ -1,44 +1,38 @@
-/* page.module.css */
 .pageContainer {
-  /* Full-height, vertical layout, gradient background */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* Example purple-to-blue gradient */
   background: linear-gradient(180deg, #c9a7f5 0%, #a1d5f5 100%);
   padding: 2rem;
   box-sizing: border-box;
   font-family: sans-serif;
 }
 
-/* Back button area */
-.back_button {
+.backButton {
   display: flex;
   align-items: center;
   cursor: pointer;
   margin-bottom: 1rem;
 }
 
-.back_button h1 {
+.backButton h1 {
   margin-left: 0.5rem;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #5c4e7a; /* A slightly darker purple for contrast */
+  color: #5c4e7a;
 }
 
-/* Container that holds userTag, Textbox, and comments side by side */
 .flexContainer {
   display: flex;
   gap: 1rem;
   flex: 1;
 }
 
-/* User tag / profile area */
 .userTag {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #f1ebfa; /* Light purple background */
+  background-color: #f1ebfa;
   border: 1px solid #d1c9e8;
   border-radius: 8px;
   padding: 1rem;
@@ -58,15 +52,14 @@
   font-size: 0.85rem;
   color: #7f7a94;
 }
-.userStuff {
+.userProfile {
   display: flex;
   flex-direction: row;
 }
-/* Main post content box */
-.Textbox {
+.textbox {
   flex: 1;
   background-color: #ffffff;
-  border: 2px solid #c1a4e4; /* Pastel purple border */
+  border: 2px solid #c1a4e4;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
@@ -75,25 +68,24 @@
   gap: 1rem;
 }
 
-.Textbox h1 {
+.textbox h1 {
   margin: 0;
   font-size: 1.5rem;
   color: #5c4e7a;
 }
 
-.Textbox p {
+.textbox p {
   margin: 0;
   line-height: 1.5;
   color: #333;
 }
 
-.Textbox img {
+.textbox img {
   max-width: 100%;
   border-radius: 4px;
   object-fit: cover;
 }
 
-/* Comments section */
 .comments {
   width: 25%;
   background-color: #fdfaff;
@@ -106,7 +98,6 @@
   max-height: 100vh;
 }
 
-/* Individual comment boxes */
 #box1,
 #box2,
 #box3 {
@@ -127,7 +118,7 @@
   padding-top: 10px;
 }
 
-.userbox {
+.userBox {
   display: flex;
   flex-direction: column;
 }
@@ -157,19 +148,4 @@
   flex-direction: row;
   justify-content: space-between;
   height: 60px;
-}
-.new_comment {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #f1ebfa;
-  border: 1px solid #d1c9e8;
-  border-radius: 6px;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-.new_comment h1 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  align-items: center;
 }

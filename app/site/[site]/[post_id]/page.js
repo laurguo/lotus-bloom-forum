@@ -19,7 +19,7 @@ export default async function PostPage({ params }) {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.links}>
-        <div className={styles.back_button}>
+        <div className={styles.backButton}>
           <a className={styles.backParent} href="/site-selection">
             <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
             <h1>Back</h1>
@@ -28,18 +28,18 @@ export default async function PostPage({ params }) {
       </div>
 
       <div className={styles.flexContainer}>
-        <div className={styles.Textbox}>
+        <div className={styles.textbox}>
           <div className={styles.userTag}>
             <h1>Welcome to Lotus Blooms Website</h1>
 
-            <div className={styles.userStuff}>
+            <div className={styles.userProfile}>
               <Image
                 src={"/default_profile.svg"}
                 alt="Back"
                 width={40}
                 height={40}
               />
-              <div className={styles.userbox}>
+              <div className={styles.userBox}>
                 <h1>Deven Mital </h1>
                 <h2> March 1, 2025 </h2>
               </div>
@@ -77,7 +77,7 @@ export default async function PostPage({ params }) {
             anim id est laborum. orem ipsum dolor sit amet, consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et
           </p>
-          <img src={"random image"} />
+          <img src={"/placeholder.jpg"} />
         </div>
 
         <CommentTab />

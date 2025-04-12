@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./CommentTab.module.css"; // Create this CSS module for styling
+import styles from "./CommentTab.module.css";
 
 export default function CommentTab() {
   const [comments, setComments] = useState([
@@ -45,7 +45,7 @@ export default function CommentTab() {
   return (
     <div className={styles.commentTabContainer}>
       <h2 className={styles.header}>Comments</h2>
-      <div className={styles.allStuff}>
+      <div className={styles.commentProfile}>
         <div className={styles.commentsList}>
           {comments.map((comment) => (
             <div key={comment.id} className={styles.commentBox}>
