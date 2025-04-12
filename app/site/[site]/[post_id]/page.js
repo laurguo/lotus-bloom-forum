@@ -77,7 +77,7 @@ export default async function PostPage({ params }) {
             anim id est laborum. orem ipsum dolor sit amet, consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et
           </p>
-          <img src={"/placeholder.jpg"} />
+          <img src={"/placeholder.jpg"} width="50%" />
         </div>
 
         <CommentTab />
