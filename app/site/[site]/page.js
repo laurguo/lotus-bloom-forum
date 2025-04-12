@@ -11,14 +11,14 @@ import NewPostButton from "@/app/components/new-post-button";
 import styles from "./page.module.css";
 
 export default async function SitePage({ params }) {
-  const p = params;
+  const p = await params;
   const site = p.site;
 
   return (
     <div>
-      <h1>Site: {site}</h1>
       <div className={styles.wholePage}>
         <div className={styles.sidebar}>
+          <h1 className={styles.h1}>Site: {site}</h1>
           <NewPostButton site={site} />
           <div className={styles.navButtons}>
             <button className={styles.navButton}>other site 1</button>

@@ -31,6 +31,7 @@
   width: 100%;
   text-align: center;
   transition: 0.3s ease;
+  font-family: "Sans Serif";
 }
 
 .navButton:hover {
@@ -39,9 +40,19 @@
 
 .postList {
   display: flex;
+  flex: 1;
   flex-direction: column;
   margin-left: 270px;
   padding: 20px;
   width: calc(100% - 270px);
   transition: margin-left 0.3s ease;
+}
+
+.h1 {
+  margin-bottom: 12px;
+  color: white;
+}
+
+.wholePage {
+  font-family: "Sans Serif";
 }

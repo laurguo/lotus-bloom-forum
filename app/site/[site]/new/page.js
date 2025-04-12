@@ -1,44 +1,37 @@
-"use client";
-
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 
-export default function NewPostPage() {
-  const router = useRouter();
-  const params = useParams();
+export default function NewPostPage({ params }) {
   const site = params.site;
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  async function handleSubmit(formData) {
+    "use server";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const title = formData.get("title");
+    const content = formData.get("content");
 
-    // Send the data to your backend here
+    // Handle storing the post however you like (DB, API call, etc.)
     console.log({ title, content, site });
 
-    // Redirect back to the site discussion board
-    router.push(`/site/${site}`);
-  };
+    // Redirect after submission
+    redirect(`/site/${site}`);
+  }
 
   return (
     <div className={styles.container}>
-      <form className={styles.formBox} onSubmit={handleSubmit}>
+      <form className={styles.formBox} action={handleSubmit}>
         <p className={styles.posterName}>Azariah</p>
         <input
           className={styles.titleInput}
           type="text"
           placeholder="Post Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          name="title"
           required
         />
         <textarea
           className={styles.contentInput}
           placeholder="Write your post here..."
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          name="content"
           required
         />
         <button type="submit" className={styles.submitButton}>
