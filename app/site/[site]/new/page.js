@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 
-export default function NewPostPage({ params }) {
-  const site = params.site;
+export default async function NewPostPage({ params }) {
+  const p = await params;
+  const site = p.site;
 
   async function handleSubmit(formData) {
     "use server";

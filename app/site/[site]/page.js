@@ -27,9 +27,21 @@ export default async function SitePage({ params }) {
           </div>
         </div>
         <div className={styles.postList}>
-          <DiscussionBoardPost site={site} />
-          <DiscussionBoardPost site={site} />
-          <DiscussionBoardPost site={site} />
+          <DiscussionBoardPost
+            site={site}
+            user="Laura Guo"
+            title="First post!"
+          />
+          <DiscussionBoardPost
+            site={site}
+            user="Azariah Smith"
+            title="Hello World"
+          />
+          <DiscussionBoardPost
+            site={site}
+            user="Deven Mittal"
+            title="Welcome to Lotus Blooms Forum"
+          />
         </div>
       </div>
     </div>
