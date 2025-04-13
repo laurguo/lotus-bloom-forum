@@ -21,7 +21,7 @@ export default async function NewPostPage({ params }) {
   return (
     <div className={styles.container}>
       <form className={styles.formBox} action={handleSubmit}>
-        <p className={styles.posterName}>Azariah</p>
+        <p className={styles.posterName}>Laura Guo</p>
         <input
           className={styles.titleInput}
           type="text"

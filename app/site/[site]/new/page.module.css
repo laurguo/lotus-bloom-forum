@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 3rem 1rem;
+  height: 100vh;
 }
 
 .formBox {
@@ -11,11 +12,12 @@
   max-width: 600px;
   width: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 70%;
 }
 
 .posterName {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -47,4 +49,9 @@
 
 .submitButton:hover {
   background-color: #a05bb3;
+}
+
+body {
+  font-family: "Sans Serif";
+  background: linear-gradient(to bottom, #ffffff, #36b0c8);
 }
