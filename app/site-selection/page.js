@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import LogoutButton from "../components/logout-button";
 import Link from "next/link";
-import LotusBloomHeader from "../components/header/lotusbloomheader";
+import LotusBloomHeader from "../components/header/LotusBloomHeader";
 
 export default function SiteSelection() {
   return (
@@ -12,23 +12,50 @@ export default function SiteSelection() {
         <div className={styles.selectionGrid}>
           <Link href="/site/san-antonio-family-resource-center">
             <div className={styles.site}>
-              San Antonio Family Resource Center
+              <div className={styles.siteTitle}>
+                San Antonio Family Resource Center
+              </div>
+              <p className={styles.siteDescription}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
             </div>
           </Link>
           <Link href="/site/lotus-bloom-downtown">
-            <div className={styles.site}>Lotus Bloom Downtown</div>
+            <div className={styles.site}>
+              <div className={styles.siteTitle}>Lotus Bloom Downtown</div>
+              <p className={styles.siteDescription}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
           </Link>
           <Link href="/site/room-to-bloom-east-oakland">
-            <div className={styles.site}>Room to Bloom East Oakland</div>
+            <div className={styles.site}>
+              <div className={styles.siteTitle}>Room to Bloom East Oakland</div>
+              <p className={styles.siteDescription}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
           </Link>
           <Link href="/site/lotus-bloom-general">
-            <div className={styles.site}>Lotus Bloom General</div>
+            <div className={styles.site}>
+              <div className={styles.siteTitle}>Lotus Bloom General</div>
+              <p className={styles.siteDescription}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
           </Link>
           <Link href="/site/family-navigation">
-            <div className={styles.site}>Family Navigation</div>
-          </Link>
-          <Link href="/site/another-super-duper-awesome-site">
-            <div className={styles.site}>Another Super Duper Awesome Site</div>
+            <div className={styles.site}>
+              <div className={styles.siteTitle}>Family Navigation</div>
+              <p className={styles.siteDescription}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
           </Link>
         </div>
         <LogoutButton />

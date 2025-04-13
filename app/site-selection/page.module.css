@@ -16,14 +16,32 @@
 
 .site {
   background-color: #c69cc0;
+  border-width: 1px;
+  border-color: #8c4799;
+  border-style: solid; /* This is required to make the border visible */
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: 250px;
   border-radius: 15px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 1.5rem;
   padding: 20px;
+  color: black;
+}
+
+.siteTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.siteDescription {
+  text-transform: none; /* Keep description in normal case */
+  font-size: 1rem;
+  margin-top: 6px;
+  color: #333; /* or any color that works for your theme */
 }
 
 @media only screen and (max-width: 600px) {
@@ -35,22 +53,28 @@
       max-width: 1400px;
       padding: 50px;
     }
-
     .site {
       background-color: #c69cc0;
+      border-width: 1px;
+      border-color: #8c4799;
+      border-style: solid; /* This is required to make the border visible */
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       height: 170px;
       border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       padding: 20px;
+      color: black;
     }
   }
 }
 
 .title {
+  font-size: 3rem;
   color: black;
   font-family: var(--font-geist-sans);
 }
