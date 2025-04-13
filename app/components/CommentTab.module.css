@@ -14,7 +14,7 @@
 .header {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #5c4e7a;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
@@ -47,7 +47,7 @@
 .commentTag h3 {
   margin: 0;
   font-size: 0.9rem;
-  color: #4a3d67;
+  color: #000000;
 }
 
 .commentTag h4 {

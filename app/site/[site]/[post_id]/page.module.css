@@ -67,11 +67,13 @@
   flex-direction: column;
   gap: 1rem;
   max-height: 100vh;
+  color: #000000;
 }
 
 .textbox h1 {
   margin: 0;
   font-size: 1.5rem;
+  color: #000000;
 }
 
 .textbox p {
@@ -85,9 +87,7 @@
   border-radius: 4px;
   object-fit: cover;
 }
-.title {
-  color: #000000;
-}
+
 .comments {
   width: 25%;
   background-color: #fdfaff;

@@ -30,7 +30,7 @@ export default async function PostPage({ params }) {
       <div className={styles.flexContainer}>
         <div className={styles.textbox}>
           <div className={styles.userTag}>
-            <h1 className={styles.title}>Welcome to Lotus Blooms Website</h1>
+            <h1>Welcome to Lotus Blooms Website</h1>
 
             <div className={styles.userProfile}>
               <Image
@@ -68,20 +68,7 @@ export default async function PostPage({ params }) {
             nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu.
             Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum
             dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
-            sapien vitae pellentesque sem placerat. In id cursus mi pretium
-            tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
-            Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
-            massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit
-            semper vel class aptent taciti sociosqu. Ad litora torquent per
-            conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet
-            consectetur adipiscing elit. Quisque faucibus ex sapien vitae
-            pellentesque sem placerat. In id cursus mi pretium tellus duis
-            convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-            vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa
-            nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel
-            class aptent taciti sociosqu. Ad litora torquent per conubia nostra
-            inceptos himenaeos. Lorem ipsum dolor sit amet consectetur
-            adipiscing elit.
+            sapien vitae pellentesque sem placerat.
           </p>
           <img src={"/placeholder.jpg"} width="50%" />
         </div>
