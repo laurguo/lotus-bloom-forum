@@ -1,0 +1,153 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #ffffff, #36b0c8);
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.backButton h1 {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.flexContainer {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.userTag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #c69cc0;
+  border: 1px solid #d1c9e8;
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 180px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+}
+
+.userTag h1 {
+  margin: 0.5rem 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.userTag h2 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7f7a94;
+}
+.userProfile {
+  display: flex;
+  flex-direction: row;
+}
+
+.textbox {
+  flex: 1;
+  background-color: #ffffff;
+  border: 2px solid #c1a4e4;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 100vh;
+  color: #000000;
+}
+
+.textbox h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #000000;
+}
+
+.textbox p {
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+.textbox img {
+  max-width: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.comments {
+  width: 25%;
+  background-color: #fdfaff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  overflow-y: scroll;
+  max-height: 100vh;
+}
+
+#box1,
+#box2,
+#box3 {
+  display: flex;
+  flex-direction: column;
+  background-color: #f1ebfa;
+  border: 1px solid #d1c9e8;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+#box1 p,
+#box2 p,
+#box3 p {
+  margin: 0;
+  color: #4a3d67;
+  padding-top: 10px;
+}
+
+.userBox {
+  display: flex;
+  flex-direction: column;
+  color: #4a3d67;
+}
+.commentTag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.commentTag h2 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #7f7a94;
+}
+.backParent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #c69cc0;
+  border: 1px solid #d1c9e8;
+  border-radius: 6px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 60px;
+}
