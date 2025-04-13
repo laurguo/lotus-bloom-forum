@@ -29,7 +29,7 @@
 }
 
 .newPostButton {
-  background-color: #b576c3;
+  background-color: #8c4799;
   color: white;
   padding: 12px 20px;
   border-radius: 12px;
@@ -40,8 +40,9 @@
   margin-bottom: 20px;
   text-align: center;
   transition: 0.3s ease;
+  font-family: "Sans Serif";
 }
 
 .newPostButton:hover {
-  background-color: #c88fd6;
+  background-color: #a05bb3;
 }

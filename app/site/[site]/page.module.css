@@ -21,7 +21,7 @@
 }
 
 .navButton {
-  background-color: #8c4799;
+  background-color: #62c1d4;
   color: white;
   padding: 10px;
   border-radius: 12px;
@@ -35,11 +35,12 @@
 }
 
 .navButton:hover {
-  background-color: #a05bb3;
+  background-color: #6cc7d9;
 }
 
 .postList {
   display: flex;
+  height: 100vh;
   flex: 1;
   flex-direction: column;
   margin-left: 270px;
@@ -49,10 +50,12 @@
 }
 
 .h1 {
-  margin-bottom: 12px;
-  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
-.wholePage {
+body {
   font-family: "Sans Serif";
+  background: linear-gradient(to bottom, #ffffff, #36b0c8);
 }

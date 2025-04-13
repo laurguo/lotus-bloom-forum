@@ -15,34 +15,33 @@ export default async function SitePage({ params }) {
   const site = p.site;
 
   return (
-    <div>
-      <div className={styles.wholePage}>
-        <div className={styles.sidebar}>
-          <h1 className={styles.h1}>Site: {site}</h1>
-          <NewPostButton site={site} />
-          <div className={styles.navButtons}>
-            <button className={styles.navButton}>other site 1</button>
-            <button className={styles.navButton}>other site 2</button>
-            <button className={styles.navButton}>other site 3</button>
-          </div>
+    <div className={styles.wholePage}>
+      <div className={styles.sidebar}>
+        <h1 className={styles.h1}>Lotus Bloom General</h1>
+        <NewPostButton site={site} />
+        <div className={styles.navButtons}>
+          <button className={styles.navButton}>
+            San Antonio Family Resource Center
+          </button>
+          <button className={styles.navButton}>Lotus Bloom Downtown</button>
+          <button className={styles.navButton}>
+            Room to Bloom East Oakland
+          </button>
+          <button className={styles.navButton}>Family Navigation</button>
         </div>
-        <div className={styles.postList}>
-          <DiscussionBoardPost
-            site={site}
-            user="Laura Guo"
-            title="First post!"
-          />
-          <DiscussionBoardPost
-            site={site}
-            user="Azariah Smith"
-            title="Hello World"
-          />
-          <DiscussionBoardPost
-            site={site}
-            user="Deven Mittal"
-            title="Welcome to Lotus Blooms Forum"
-          />
-        </div>
+      </div>
+      <div className={styles.postList}>
+        <DiscussionBoardPost site={site} user="Laura Guo" title="First post!" />
+        <DiscussionBoardPost
+          site={site}
+          user="Azariah Smith"
+          title="Hello World"
+        />
+        <DiscussionBoardPost
+          site={site}
+          user="Deven Mittal"
+          title="Welcome to Lotus Blooms Forum"
+        />
       </div>
     </div>
   );
