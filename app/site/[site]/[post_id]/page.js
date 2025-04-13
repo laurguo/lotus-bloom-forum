@@ -30,7 +30,7 @@ export default async function PostPage({ params }) {
       <div className={styles.flexContainer}>
         <div className={styles.textbox}>
           <div className={styles.userTag}>
-            <h1>Welcome to Lotus Blooms Website</h1>
+            <h1 className={styles.title}>Welcome to Lotus Blooms Website</h1>
 
             <div className={styles.userProfile}>
               <Image
@@ -47,35 +47,41 @@ export default async function PostPage({ params }) {
           </div>
 
           <p>
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. orem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. orem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. orem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. orem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
+            faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi
+            pretium tellus duis convallis. Tempus leo eu aenean sed diam urna
+            tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
+            Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut
+            hendrerit semper vel class aptent taciti sociosqu. Ad litora
+            torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor
+            sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
+            vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
+            convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+            vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa
+            nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel
+            class aptent taciti sociosqu. Ad litora torquent per conubia nostra
+            inceptos himenaeos. Lorem ipsum dolor sit amet consectetur
+            adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
+            placerat. In id cursus mi pretium tellus duis convallis. Tempus leo
+            eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec
+            metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer
+            nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu.
+            Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum
+            dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
+            sapien vitae pellentesque sem placerat. In id cursus mi pretium
+            tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis
+            massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit
+            semper vel class aptent taciti sociosqu. Ad litora torquent per
+            conubia nostra inceptos himenaeos. Lorem ipsum dolor sit amet
+            consectetur adipiscing elit. Quisque faucibus ex sapien vitae
+            pellentesque sem placerat. In id cursus mi pretium tellus duis
+            convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
+            vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa
+            nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel
+            class aptent taciti sociosqu. Ad litora torquent per conubia nostra
+            inceptos himenaeos. Lorem ipsum dolor sit amet consectetur
+            adipiscing elit.
           </p>
           <img src={"/placeholder.jpg"} width="50%" />
         </div>
