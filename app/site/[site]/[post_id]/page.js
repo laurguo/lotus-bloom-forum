@@ -20,7 +20,7 @@ export default async function PostPage({ params }) {
     <div className={styles.pageContainer}>
       <div className={styles.links}>
         <div className={styles.backButton}>
-          <a className={styles.backParent} href="/site-selection">
+          <a className={styles.backParent} href={`/site/${site}`}>
             <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
             <h1>Back</h1>
           </a>
