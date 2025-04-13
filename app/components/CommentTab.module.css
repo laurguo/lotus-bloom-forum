@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   background-color: #fdfaff;
-  border: 1px solid #e8dff6;
+  border: 2px solid #c1a4e4;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -31,7 +31,7 @@
 .commentBox {
   display: flex;
   flex-direction: column;
-  background-color: #f1ebfa;
+  background-color: #c69cc0;
   border: 1px solid #d1c9e8;
   border-radius: 6px;
   padding: 0.75rem;
@@ -67,7 +67,7 @@
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  background-color: #f1ebfa;
+  background-color: #c69cc0;
   border: 1px solid #d1c9e8;
   border-radius: 6px;
   padding: 0.5rem;
@@ -84,7 +84,7 @@
 }
 
 .commentInput button {
-  background-color: #c1a4e4;
+  background-color: #784692;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
