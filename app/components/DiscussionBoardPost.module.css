@@ -1,0 +1,39 @@
+.postButton {
+  background-color: #c79bbf;
+  padding: 16px 24px;
+  border-width: 1px;
+  border-color: #8c4799;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out;
+  font-family: "Sans Serif";
+}
+
+.postButton:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.nameID {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.postTitle {
+  font-size: 1.5rem;
+}
+
+.username {
+  font-size: 1.3rem;
+}
+
+.roleTags {
+  align-self: center;
+  background-color: #e09a3b;
+  border-radius: 4px;
+  padding: 2px;
+}
