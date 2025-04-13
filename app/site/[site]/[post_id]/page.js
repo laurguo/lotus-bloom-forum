@@ -10,6 +10,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import CommentTab from "@/app/components/CommentTab";
+import LotusBloomHeader from "@/app/components/header/LotusBloomHeader";
 
 export default async function PostPage({ params }) {
   const p = await params;
@@ -17,63 +18,67 @@ export default async function PostPage({ params }) {
   const post_id = p.post_id;
 
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.links}>
-        <div className={styles.backButton}>
-          <a className={styles.backParent} href={`/site/${site}`}>
-            <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
-            <h1>Back</h1>
-          </a>
+    <div>
+      <LotusBloomHeader />
+      <div className={styles.pageContainer}>
+        <div className={styles.links}>
+          <div className={styles.backButton}>
+            <a className={styles.backParent} href={`/site/${site}`}>
+              <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
+              <h1>Back</h1>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.flexContainer}>
-        <div className={styles.textbox}>
-          <div className={styles.userTag}>
-            <h1>Welcome to Lotus Blooms Website</h1>
+        <div className={styles.flexContainer}>
+          <div className={styles.textbox}>
+            <div className={styles.userTag}>
+              <h1>Welcome to Lotus Blooms Website</h1>
 
-            <div className={styles.userProfile}>
-              <Image
-                src={"/default_profile.svg"}
-                alt="Back"
-                width={40}
-                height={40}
-              />
-              <div className={styles.userBox}>
-                <h1>Deven Mital </h1>
-                <h2> March 1, 2025 </h2>
+              <div className={styles.userProfile}>
+                <Image
+                  src={"/default_profile.svg"}
+                  alt="Back"
+                  width={40}
+                  height={40}
+                />
+                <div className={styles.userBox}>
+                  <h1>Deven Mital </h1>
+                  <h2> March 1, 2025 </h2>
+                </div>
               </div>
             </div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
+              faucibus ex sapien vitae pellentesque sem placerat. In id cursus
+              mi pretium tellus duis convallis. Tempus leo eu aenean sed diam
+              urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum
+              egestas. Iaculis massa nisl malesuada lacinia integer nunc
+              posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad
+              litora torquent per conubia nostra inceptos himenaeos. Lorem ipsum
+              dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
+              sapien vitae pellentesque sem placerat. In id cursus mi pretium
+              tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+              Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
+              Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut
+              hendrerit semper vel class aptent taciti sociosqu. Ad litora
+              torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor
+              sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
+              vitae pellentesque sem placerat. In id cursus mi pretium tellus
+              duis convallis. Tempus leo eu aenean sed diam urna tempor.
+              Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
+              Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut
+              hendrerit semper vel class aptent taciti sociosqu. Ad litora
+              torquent per conubia nostra inceptos himenaeos.Lorem ipsum dolor
+              sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
+              vitae pellentesque sem placerat.
+            </p>
+            <img src={"/placeholder.jpg"} width="50%" />
           </div>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
-            faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi
-            pretium tellus duis convallis. Tempus leo eu aenean sed diam urna
-            tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
-            Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut
-            hendrerit semper vel class aptent taciti sociosqu. Ad litora
-            torquent per conubia nostra inceptos himenaeos. Lorem ipsum dolor
-            sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
-            vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
-            convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
-            vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa
-            nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel
-            class aptent taciti sociosqu. Ad litora torquent per conubia nostra
-            inceptos himenaeos. Lorem ipsum dolor sit amet consectetur
-            adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
-            placerat. In id cursus mi pretium tellus duis convallis. Tempus leo
-            eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec
-            metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer
-            nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu.
-            Ad litora torquent per conubia nostra inceptos himenaeos.Lorem ipsum
-            dolor sit amet consectetur adipiscing elit. Quisque faucibus ex
-            sapien vitae pellentesque sem placerat.
-          </p>
-          <img src={"/placeholder.jpg"} width="50%" />
+          <CommentTab />
         </div>
-
-        <CommentTab />
       </div>
     </div>
   );

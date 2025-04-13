@@ -5,6 +5,7 @@ body {
   padding: 0;
   max-width: 100vw;
   overflow-x: hidden;
+}
 
 @font-face {
   font-family: "FolksLight";
