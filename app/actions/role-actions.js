@@ -3,22 +3,7 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { ManagementClient } from "auth0";
 
-export async function assignRole(formData) {
-  // Get form data
-  const roleType = formData.get("roleType");
-
-  // Get the authenticated user session
-  const session = await getSession();
-
-  if (!session || !session.user) {
-    return {
-      success: false,
-      error: "Not authenticated",
-    };
-  }
-
-  const { user } = session;
-
+export async function assignRole(user, roleType) {
   // Validate the role type
   if (!roleType || !["Family Navigator", "Admin"].includes(roleType)) {
     return {
@@ -74,4 +59,20 @@ export async function assignRole(formData) {
       error: "Failed to assign role. Please try again later.",
     };
   }
+}
+
+export async function assignRoleSelf(roleType) {
+  // Get the authenticated user session
+  const session = await getSession();
+
+  if (!session || !session.user) {
+    return {
+      success: false,
+      error: "Not authenticated",
+    };
+  }
+
+  const { user } = session;
+
+  return assignRole(user, roleType);
 }

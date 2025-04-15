@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { assignRole } from "../actions/role-actions";
+import { assignRoleSelf } from "../actions/role-actions";
 import styles from "./EditRoles.module.css";
+import LotusBloomHeader from "../components/header/LotusBloomHeader";
 
 /*
  * This page allows a user to edit their roles.
@@ -39,12 +40,8 @@ export default function EditRoles() {
     setStatus("Requesting role assignment...");
 
     try {
-      // Create FormData object for the server action
-      const formData = new FormData();
-      formData.append("roleType", selectedRole);
-
       // Call the server action
-      const result = await assignRole(formData);
+      const result = await assignRoleSelf(selectedRole);
 
       if (!result.success) {
         throw new Error(result.error || "Failed to assign role");
@@ -73,57 +70,60 @@ export default function EditRoles() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Edit Your Roles</h1>
+      <LotusBloomHeader />
+      <div className={styles.innerContainer}>
+        <h1 className={styles.title}>Edit Your Roles</h1>
 
-      <div className={styles.userInfo}>
-        <p>
-          <strong>Current Email:</strong> {user.email}
-        </p>
-      </div>
+        <div className={styles.userInfo}>
+          <p>
+            <strong>Current Email:</strong> {user.email}
+          </p>
+        </div>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.formGroup}>
-          <label className={styles.label}>Select an additional role:</label>
-          <select
-            value={selectedRole}
-            onChange={handleRoleChange}
-            className={styles.select}
-            disabled={isSubmitting}
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Select an additional role:</label>
+            <select
+              value={selectedRole}
+              onChange={handleRoleChange}
+              className={styles.select}
+              disabled={isSubmitting}
+            >
+              <option value="">-- Select a role --</option>
+              <option value="Family Navigator">Family Navigator</option>
+              {isEligibleForAdmin && <option value="Admin">Admin</option>}
+            </select>
+            {!isEligibleForAdmin && (
+              <p className={styles.note}>
+                Note: Admin role is only available for @lotusbloomfamily.org
+                email addresses
+              </p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting || !selectedRole}
+            className={styles.button}
           >
-            <option value="">-- Select a role --</option>
-            <option value="Family Navigator">Family Navigator</option>
-            {isEligibleForAdmin && <option value="Admin">Admin</option>}
-          </select>
-          {!isEligibleForAdmin && (
-            <p className={styles.note}>
-              Note: Admin role is only available for @lotusbloomfamily.org email
-              addresses
-            </p>
-          )}
-        </div>
+            {isSubmitting ? "Processing..." : "Assign Role"}
+          </button>
+        </form>
 
-        <button
-          type="submit"
-          disabled={isSubmitting || !selectedRole}
-          className={styles.button}
-        >
-          {isSubmitting ? "Processing..." : "Assign Role"}
-        </button>
-      </form>
-
-      {status && (
-        <div
-          className={`${styles.status} ${
-            status.includes("Error")
-              ? styles.error
-              : status.includes("Success")
-                ? styles.success
-                : styles.info
-          }`}
-        >
-          {status}
-        </div>
-      )}
+        {status && (
+          <div
+            className={`${styles.status} ${
+              status.includes("Error")
+                ? styles.error
+                : status.includes("Success")
+                  ? styles.success
+                  : styles.info
+            }`}
+          >
+            {status}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

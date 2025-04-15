@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./LotusBloomHeader.module.css";
 
-export default function Header() {
+export default function LotusBloomHeader() {
   const [tocOpen, setTocOpen] = useState(false);
 
   const toggleTOC = () => {
