@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #ffffff, #36b0c8);
+}
+
+.innerContainer {
+  margin: auto;
+  margin-top: 100px;
+  width: 80%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+/* Status Styles Below */
+.status {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.success {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.info {
+  background-color: #dbeafe;
+  color: #1e40af;
+}

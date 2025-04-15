@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { assignRoleSelf } from "../actions/role-actions";
+import { assignRoleSelf, getUserRoles } from "../actions/role-actions";
 import styles from "./EditRoles.module.css";
 import LotusBloomHeader from "../components/header/LotusBloomHeader";
 
@@ -23,6 +23,32 @@ export default function EditRoles() {
   const [selectedRole, setSelectedRole] = useState("");
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [userRoles, setUserRoles] = useState([]);
+  const [loadingRoles, setLoadingRoles] = useState(false);
+
+  useEffect(() => {
+    async function fetchUserRoles() {
+      if (user && user.sub) {
+        setLoadingRoles(true);
+        try {
+          const roles = await getUserRoles(user);
+          if (roles) {
+            setUserRoles(roles);
+          } else {
+            console.error("Failed to fetch roles");
+          }
+        } catch (error) {
+          e;
+          console.error("Error fetching roles:", error);
+        } finally {
+          setLoadingRoles(false);
+        }
+      }
+    }
+
+    fetchUserRoles();
+  }, [user]);
 
   const handleRoleChange = (e) => {
     setSelectedRole(e.target.value);
@@ -67,6 +93,7 @@ export default function EditRoles() {
   // Check if the user email has the required domain for Admin role
   const isEligibleForAdmin =
     user.email && user.email.endsWith("@lotusbloomfamily.org");
+  true;
 
   return (
     <div className={styles.container}>
@@ -77,6 +104,14 @@ export default function EditRoles() {
         <div className={styles.userInfo}>
           <p>
             <strong>Current Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Current Roles:</strong>{" "}
+            {loadingRoles
+              ? "Loading..."
+              : userRoles.length > 0
+                ? userRoles.join(", ")
+                : "No additional roles"}
           </p>
         </div>
 
