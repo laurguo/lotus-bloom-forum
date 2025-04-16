@@ -6,7 +6,7 @@ import { updateUserName } from "../actions/role-actions";
 import styles from "./CompleteProfile.module.css";
 
 export default function CompleteProfile() {
-  const { user, error: userError, isLoading } = useUser();
+  const { error: userError, checkSession, isLoading } = useUser();
   const [name, setName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
@@ -22,11 +22,34 @@ export default function CompleteProfile() {
       const result = await updateUserName(name);
 
       if (result.success) {
+        // updates the session with the user's new name
+        try {
+          await checkSession();
+          console.log("Client session refreshed");
+        } catch (sessionError) {
+          console.error("Client session refresh failed:", sessionError);
+        }
+
+        try {
+          const refreshResponse = await fetch("/api/refresh-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          });
+
+          if (refreshResponse.ok) {
+            console.log("Server session refreshed");
+          } else {
+            console.error("Server session refresh failed");
+          }
+        } catch (refreshError) {
+          console.error("Error calling refresh endpoint:", refreshError);
+        }
+
         setMessage(result.message);
-        // Refresh the page after a short delay
+        // Full refreshes the page and directs to /site-selection after a short delay
         setTimeout(() => {
           window.location.href = "/site-selection";
-        }, 500);
+        }, 2000);
       } else {
         setError(result.error);
       }

@@ -10,11 +10,6 @@ import { NextResponse } from "next/server";
  *    the Auth0 login page.
  *
  * 2. Protected Routes (see matcher config):
- *    - /edit-roles: Managing user roles
- *    - /all-user-roles: Viewing all user roles
- *    - /site-selection: Site selection page
- *    - /:site/:post_id*: All dynamic post routes
- *    - /:site: All site-specific pages
  *
  * Any attempt to access these routes without authentication will trigger the Auth0
  * authentication flow. After successful login, users will be redirected back to

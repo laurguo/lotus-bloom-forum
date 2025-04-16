@@ -182,7 +182,8 @@ export async function updateUserName(fullName) {
 
     return {
       success: true,
-      message: "Name updated successfully",
+      message:
+        "Name updated successfully! Redirecting you to site-selection...",
     };
   } catch (error) {
     console.error("Error updating user name:", error);
@@ -247,6 +248,48 @@ export async function updateUserNameAdmin(userId, fullName) {
     return {
       success: false,
       error: "Failed to update name. Please try again later.",
+    };
+  }
+}
+
+/**
+ * Gets the most up-to-date user data directly from Auth0
+ * @returns {Promise<{success: boolean, user?: any, error?: string}>}
+ */
+export async function getCurrentUser() {
+  try {
+    // Get session for the user ID
+    const session = await getSession();
+
+    // Check if session exists
+    if (!session || !session.user) {
+      return {
+        success: false,
+        error: "Not authenticated",
+      };
+    }
+
+    const userId = session.user.sub;
+
+    // Initialize Auth0 Management client to get fresh user data
+    const auth0 = new ManagementClient({
+      domain: process.env.AUTH0_DOMAIN,
+      clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+      clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+    });
+
+    // Get the latest user data directly from Auth0
+    const user = await auth0.users.get({ id: userId });
+
+    return {
+      success: true,
+      user: user.data,
+    };
+  } catch (error) {
+    console.error("Error fetching current user:", error);
+    return {
+      success: false,
+      error: "Failed to fetch user data",
     };
   }
 }
