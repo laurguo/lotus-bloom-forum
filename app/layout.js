@@ -1,5 +1,5 @@
 import { Amaranth } from "next/font/google";
-import DrawerWrapper from "./components/DrawerWrapper";
+import HeaderWrapper from "./components/HeaderWrapper";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -19,8 +19,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${amaranth.variable}`}>
         <Providers>
+          <HeaderWrapper />
+
           {children}
-          <DrawerWrapper />
         </Providers>
       </body>
     </html>

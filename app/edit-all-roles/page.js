@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { listUsers } from "../actions/role-actions";
 import styles from "./EditAllRoles.module.css";
-import LotusBloomHeader from "../components/header/LotusBloomHeader";
 
 export default function EditAllRoles() {
   const { user, isLoading } = useUser();
@@ -40,7 +39,6 @@ export default function EditAllRoles() {
 
   return (
     <div className={styles.container}>
-      <LotusBloomHeader />
       <div className={styles.innerContainer}>
         <h1 className={styles.title}>Edit All User Roles</h1>
 
@@ -69,6 +67,7 @@ export default function EditAllRoles() {
             <table className={styles.usersTable}>
               <thead>
                 <tr>
+                  <th>Name</th>
                   <th>Email</th>
                   <th>Roles</th>
                   <th>Actions</th>
@@ -78,6 +77,7 @@ export default function EditAllRoles() {
                 {users.length > 0 ? (
                   users.map((user) => (
                     <tr key={user.user_id}>
+                      <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>
                         {user.roles && user.roles.length > 0

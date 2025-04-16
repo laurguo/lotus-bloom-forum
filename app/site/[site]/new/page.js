@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import styles from "./page.module.css";
-import LotusBloomHeader from "@/app/components/header/LotusBloomHeader";
 
 export default async function NewPostPage({ params }) {
   const p = await params;
@@ -21,7 +20,6 @@ export default async function NewPostPage({ params }) {
 
   return (
     <div>
-      <LotusBloomHeader />
       <div className={styles.container}>
         <form className={styles.formBox} action={handleSubmit}>
           <p className={styles.posterName}>Laura Guo</p>

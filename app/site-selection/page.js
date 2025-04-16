@@ -1,12 +1,10 @@
 import styles from "./page.module.css";
 import LogoutButton from "../components/logout-button";
 import Link from "next/link";
-import LotusBloomHeader from "../components/header/LotusBloomHeader";
 
 export default function SiteSelection() {
   return (
     <div>
-      <LotusBloomHeader />
       <div className={styles.page}>
         <h1 className={styles.title}>Select a Site!</h1>
         <div className={styles.selectionGrid}>

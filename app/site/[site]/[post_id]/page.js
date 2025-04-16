@@ -10,7 +10,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import CommentTab from "@/app/components/CommentTab";
-import LotusBloomHeader from "@/app/components/header/LotusBloomHeader";
 
 export default async function PostPage({ params }) {
   const p = await params;
@@ -19,7 +18,6 @@ export default async function PostPage({ params }) {
 
   return (
     <div>
-      <LotusBloomHeader />
       <div className={styles.pageContainer}>
         <div className={styles.links}>
           <div className={styles.backButton}>

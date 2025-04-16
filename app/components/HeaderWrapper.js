@@ -1,13 +1,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import LotusBloomHeader from "./header/LotusBloomHeader";
 
-/*
- * TODO:
- * - Implement the actual drawer component
- */
-
-export default function DrawerWrapper() {
+export default function HeaderWrapper() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
@@ -15,5 +11,5 @@ export default function DrawerWrapper() {
     return null;
   }
 
-  return <div>drawer placeholder</div>;
+  return <LotusBloomHeader />;
 }

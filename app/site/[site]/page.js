@@ -9,7 +9,6 @@
 import DiscussionBoardPost from "@/app/components/DiscussionBoardPost";
 import NewPostButton from "@/app/components/new-post-button";
 import styles from "./page.module.css";
-import LotusBloomHeader from "@/app/components/header/LotusBloomHeader";
 
 export default async function SitePage({ params }) {
   const p = await params;
@@ -17,7 +16,6 @@ export default async function SitePage({ params }) {
 
   return (
     <div>
-      <LotusBloomHeader />
       <div className={styles.wholePage}>
         <div className={styles.sidebar}>
           <h1 className={styles.h1}>General</h1>

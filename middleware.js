@@ -31,7 +31,8 @@ export const config = {
   matcher: [
     // Explicitly list protected routes - ONLY these will be protected
     "/edit-roles",
-    "/all-user-roles",
+    "/edit-all-roles",
+    "/complete-profile",
     "/site-selection",
     "/site/:site/:post_id*",
     "/site/:site",

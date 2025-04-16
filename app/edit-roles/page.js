@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { assignRoleSelf, getUserRoles } from "../actions/role-actions";
 import styles from "./EditRoles.module.css";
-import LotusBloomHeader from "../components/header/LotusBloomHeader";
 
 /*
  * This page allows a user to edit their roles.
@@ -97,7 +96,6 @@ export default function EditRoles() {
 
   return (
     <div className={styles.container}>
-      <LotusBloomHeader />
       <div className={styles.innerContainer}>
         <h1 className={styles.title}>Edit Your Roles</h1>
 
