@@ -293,3 +293,20 @@ export async function getCurrentUser() {
     };
   }
 }
+
+export async function getUserName(userId) {
+  try {
+    const auth0 = new ManagementClient({
+      domain: process.env.AUTH0_DOMAIN,
+      clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+      clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+    });
+
+    const user = await auth0.users.get({ id: userId });
+    console.log("getusername", userId, user);
+    return user.data?.name || "Unknown User";
+  } catch (error) {
+    console.error("Error getting user name:", error);
+    return "Unknown User";
+  }
+}

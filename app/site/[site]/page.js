@@ -9,10 +9,22 @@
 import DiscussionBoardPost from "@/app/components/DiscussionBoardPost";
 import NewPostButton from "@/app/components/new-post-button";
 import styles from "./page.module.css";
+import { getPosts } from "@/app/actions/db-actions";
+import { getUserName, getUserRoles } from "@/app/actions/role-actions";
 
 export default async function SitePage({ params }) {
   const p = await params;
   const site = p.site;
+  const posts = await getPosts(site);
+
+  // Fetch user names and roles for all posts
+  const postsWithUserInfo = await Promise.all(
+    posts.map(async (post) => {
+      const userName = await getUserName(post.author_id);
+      const userRoles = await getUserRoles({ sub: post.author_id });
+      return { ...post, userName, userRoles };
+    }),
+  );
 
   return (
     <div>
@@ -32,21 +44,15 @@ export default async function SitePage({ params }) {
           </div>
         </div>
         <div className={styles.postList}>
-          <DiscussionBoardPost
-            site={site}
-            user="Laura Guo"
-            title="First post!"
-          />
-          <DiscussionBoardPost
-            site={site}
-            user="Azariah Smith"
-            title="Hello World"
-          />
-          <DiscussionBoardPost
-            site={site}
-            user="Deven Mittal"
-            title="Welcome to Lotus Blooms Forum"
-          />
+          {postsWithUserInfo.map((post) => (
+            <DiscussionBoardPost
+              key={post.id}
+              site={site}
+              name={post.userName}
+              title={post.title}
+              roles={post.userRoles}
+            />
+          ))}
         </div>
       </div>
     </div>
