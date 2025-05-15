@@ -75,22 +75,20 @@ export default function SiteSelection() {
   }
 
   return (
-    <div>
-      <div className={styles.page}>
-        {userName.current && <p>Welcome, {userName.current}!</p>}
-        <h1 className={styles.title}>Select a Site!</h1>
-        <div className={styles.selectionGrid}>
-          {sites.map((site) => (
-            <Link key={site.url} href={`/site/${site.url}`}>
-              <div className={styles.site}>
-                <div className={styles.siteTitle}>{site.name}</div>
-                <p className={styles.siteDescription}>{site.description}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <LogoutButton />
+    <div className={styles.page}>
+      {userName.current && <p>Welcome, {userName.current}!</p>}
+      <h1 className={styles.title}>Select a Site!</h1>
+      <div className={styles.selectionGrid}>
+        {sites.map((site) => (
+          <Link key={site.url} href={`/site/${site.url}`}>
+            <div className={styles.site}>
+              <div className={styles.siteTitle}>{site.name}</div>
+              <p className={styles.siteDescription}>{site.description}</p>
+            </div>
+          </Link>
+        ))}
       </div>
+      <LogoutButton />
     </div>
   );
 }
