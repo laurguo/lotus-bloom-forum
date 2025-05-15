@@ -1,27 +1,24 @@
 import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 import { getSession } from "@auth0/nextjs-auth0";
-import { addPost } from "@/app/actions/db-actions";
-export default async function NewPostPage({ params }) {
-  const p = await params;
-  const site = p.site;
+import { editPost, getPostById } from "@/app/actions/db-actions";
+
+export default async function EditPage({ params }) {
+  const { site, post_id } = params;
 
   const session = await getSession();
   const { user } = session;
 
-  async function handleSubmit(formData) {
-    "use server"; // very important for server actions!
+  const post = await getPostById(post_id); // ← fetch the post data
 
-    const id = user.sub;
+  async function handleSubmit(formData) {
+    "use server";
+
     const title = formData.get("title");
     const text = formData.get("text");
 
-    console.log("title", title);
-    console.log("text", text);
-
-    await addPost(id, site, title, text);
-
-    redirect(`/site/${site}`); // after submitting, go back to the site page
+    await editPost(Number(post_id), title, text);
+    redirect(`/site/${site}`);
   }
 
   return (
@@ -32,18 +29,18 @@ export default async function NewPostPage({ params }) {
           <input
             className={styles.titleInput}
             type="text"
-            placeholder="Post Title"
             name="title"
             required
+            defaultValue={post?.title || ""}
           />
           <textarea
             className={styles.contentInput}
-            placeholder="Write your post here..."
             name="text"
             required
+            defaultValue={post?.body || ""}
           />
           <button type="submit" className={styles.submitButton}>
-            Submit Post
+            Save
           </button>
         </form>
       </div>
