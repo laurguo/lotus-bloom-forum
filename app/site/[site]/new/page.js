@@ -10,18 +10,15 @@ export default async function NewPostPage({ params }) {
   const { user } = session;
 
   async function handleSubmit(formData) {
-    "use server"; // very important for server actions!
+    "use server";
 
     const id = user.sub;
     const title = formData.get("title");
     const text = formData.get("text");
 
-    console.log("title", title);
-    console.log("text", text);
-
     await addPost(id, site, title, text);
 
-    redirect(`/site/${site}`); // after submitting, go back to the site page
+    redirect(`/site/${site}`);
   }
 
   return (

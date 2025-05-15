@@ -124,6 +124,16 @@
   flex-direction: column;
   color: #4a3d67;
 }
+.roleTags {
+  background-color: #e09a3b;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #000000;
+  display: inline-flex;
+  width: fit-content;
+}
 .commentTag {
   display: flex;
   flex-direction: row;

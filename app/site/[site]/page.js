@@ -1,19 +1,21 @@
+import Link from "next/link";
 import DiscussionBoardPost from "@/app/components/DiscussionBoardPost";
 import NewPostButton from "@/app/components/new-post-button";
 import styles from "./page.module.css";
 import { getPosts } from "@/app/actions/db-actions";
-import { getUserName, getUserRoles } from "@/app/actions/role-actions";
+import { getUserDetails } from "@/app/actions/role-actions";
+import { sites } from "@/app/constants";
 
 export default async function SitePage({ params }) {
   const p = await params;
   const site = p.site;
   const posts = await getPosts(site);
 
-  // Fetch user names and roles for all posts
   const postsWithUserInfo = await Promise.all(
     posts.map(async (post) => {
-      const userName = await getUserName(post.author_id);
-      const userRoles = await getUserRoles({ sub: post.author_id });
+      const { name: userName, roles: userRoles } = await getUserDetails(
+        post.author_id,
+      );
       return { ...post, userName, userRoles };
     }),
   );
@@ -25,14 +27,15 @@ export default async function SitePage({ params }) {
           <h1 className={styles.h1}>General</h1>
           <NewPostButton site={site} />
           <div className={styles.navButtons}>
-            <button className={styles.navButton}>
-              San Antonio Family Resource Center
-            </button>
-            <button className={styles.navButton}>Lotus Bloom Downtown</button>
-            <button className={styles.navButton}>
-              Room to Bloom East Oakland
-            </button>
-            <button className={styles.navButton}>Family Navigation</button>
+            {sites.map((site) => (
+              <Link
+                key={site.url}
+                href={`/site/${site.url}`}
+                className={styles.navButton}
+              >
+                {site.name}
+              </Link>
+            ))}
           </div>
         </div>
         <div className={styles.postList}>
@@ -58,11 +61,3 @@ export async function generateMetadata({ params }) {
     title: `Site: ${p.site}`,
   };
 }
-
-// async function handleDeletePost(postId) {
-//   "use server";
-
-//   await deletePost(postId);
-
-//   redirect(`/site/${site}`);
-// }

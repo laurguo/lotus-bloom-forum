@@ -2,24 +2,7 @@
 
 import { getSession } from "@auth0/nextjs-auth0";
 import { ManagementClient } from "auth0";
-
-export async function getUserRoles(user) {
-  try {
-    const auth0 = new ManagementClient({
-      domain: process.env.AUTH0_DOMAIN,
-      clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
-      clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
-    });
-
-    const userRoles = await auth0.users.getRoles({
-      id: user.sub || user.user_id,
-    });
-    return userRoles.data.map((roleObject) => roleObject.name);
-  } catch (error) {
-    console.error("Error getting roles:", error);
-    return [];
-  }
-}
+import { cache } from "react";
 
 export async function assignRole(user, roleType) {
   // Validate the role type
@@ -294,19 +277,42 @@ export async function getCurrentUser() {
   }
 }
 
-export async function getUserName(userId) {
+export const getUserName = cache(async (userId) => {
   try {
     const auth0 = new ManagementClient({
       domain: process.env.AUTH0_DOMAIN,
       clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
       clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
     });
-
     const user = await auth0.users.get({ id: userId });
-    // console.log("getusername", userId, user);
     return user.data?.name || "Unknown User";
   } catch (error) {
     console.error("Error getting user name:", error);
     return "Unknown User";
   }
-}
+});
+
+export const getUserRoles = cache(async (user) => {
+  try {
+    const auth0 = new ManagementClient({
+      domain: process.env.AUTH0_DOMAIN,
+      clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+      clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+    });
+    const userRoles = await auth0.users.getRoles({
+      id: user.sub || user.user_id,
+    });
+    return userRoles.data.map((roleObject) => roleObject.name);
+  } catch (error) {
+    console.error("Error getting roles:", error);
+    return [];
+  }
+});
+
+export const getUserDetails = cache(async (userId) => {
+  const [name, roles] = await Promise.all([
+    getUserName(userId),
+    getUserRoles({ sub: userId }),
+  ]);
+  return { id: userId, name, roles };
+});

@@ -1,18 +1,8 @@
-/*
- * TODO:
- * 1a. Display a list of comments for the post
- * 1b. Display some error message if the post_id doesn't exist/is invalid (just hardcode valid/invalid post_ids for now)
- * 2a. Add a way to create a new comment
- * 2b. Add a way to delete and edit a comment
- * 2c. Add a way to delete and edit a post (only for a user who made the post (worry about the functionality of this later once we do backend))
- */
-
 import Image from "next/image";
 import styles from "./page.module.css";
 import CommentTab from "@/app/components/CommentTab";
-import { getComments } from "@/app/actions/db-actions";
-import { getPostById } from "@/app/actions/db-actions";
-import { getUserName, getUserRoles } from "@/app/actions/role-actions";
+import { getPostById, getComments } from "@/app/actions/db-actions";
+import { getUserDetails } from "@/app/actions/role-actions";
 
 export default async function PostPage({ params }) {
   const p = await params;
@@ -24,14 +14,19 @@ export default async function PostPage({ params }) {
     return <p>Post not found.</p>;
   }
 
-  const authorName = await getUserName(post.author_id);
+  const { name: authorName, roles: authorRoles } = await getUserDetails(
+    post.author_id,
+  );
+  const nonStandardRole = authorRoles?.find((role) => role !== "Standard");
+
   const createdAt = new Date(post.created_at).toLocaleDateString();
 
   const comments = await getComments(post_id);
   const commentsWithName = await Promise.all(
     comments.map(async (comment) => {
-      const userName = await getUserName(comment.author_id);
-      const userRoles = await getUserRoles({ sub: comment.author_id });
+      const { name: userName, roles: userRoles } = await getUserDetails(
+        post.author_id,
+      );
       return { ...comment, userName, userRoles };
     }),
   );
@@ -62,6 +57,11 @@ export default async function PostPage({ params }) {
                 />
                 <div className={styles.userBox}>
                   <h1>{authorName} </h1>
+                  {nonStandardRole && (
+                    <div className={styles.roleTags}>
+                      {nonStandardRole.toUpperCase()}
+                    </div>
+                  )}
                   <h2>{createdAt} </h2>
                 </div>
               </div>

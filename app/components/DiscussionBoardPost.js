@@ -1,8 +1,7 @@
 import styles from "./DiscussionBoardPost.module.css";
-import { handleDeletePost } from "@/app/site/[site]/page.js";
-import { deletePost } from "../actions/db-actions";
 import DeletePostButton from "./DeletePostButton";
 import EditPostButton from "./EditPostButton";
+import Link from "next/link";
 
 export default async function DiscussionBoardPost({
   site,
@@ -15,19 +14,17 @@ export default async function DiscussionBoardPost({
 
   return (
     <div className={styles.postWrapper}>
-      <form action={`/site/${site}/${post_id}`} style={{ display: "contents" }}>
-        <button className={styles.postButton}>
-          <div className={styles.nameID}>
-            <div className={styles.username}>{name}</div>
-            {nonStandardRole && (
-              <div className={styles.roleTags}>
-                {nonStandardRole.toUpperCase()}
-              </div>
-            )}
-          </div>
-          <div className={styles.postTitle}>{title}</div>
-        </button>
-      </form>
+      <Link href={`/site/${site}/${post_id}`} className={styles.postButton}>
+        <div className={styles.nameID}>
+          <div className={styles.username}>{name}</div>
+          {nonStandardRole && (
+            <div className={styles.roleTags}>
+              {nonStandardRole.toUpperCase()}
+            </div>
+          )}
+        </div>
+        <div className={styles.postTitle}>{title}</div>
+      </Link>
       <div className={styles.editdelete}>
         <DeletePostButton post_id={post_id} />
         <EditPostButton site={site} post_id={post_id} />
