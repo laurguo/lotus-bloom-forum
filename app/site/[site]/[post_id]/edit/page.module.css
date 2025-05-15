@@ -51,7 +51,3 @@
 .submitButton:hover {
   background-color: #a05bb3;
 }
-
-body {
-  background: linear-gradient(to bottom, #ffffff, #36b0c8);
-}
