@@ -3,7 +3,7 @@ import DeletePostButton from "./DeletePostButton";
 import EditPostButton from "./EditPostButton";
 import Link from "next/link";
 
-export default async function DiscussionBoardPost({
+export default function DiscussionBoardPost({
   site,
   name,
   title,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import styles from "./CommentTab.module.css";
 import {
   postComments,
@@ -83,73 +84,84 @@ export default function CommentTab({ comments, postid }) {
       <h2 className={styles.header}>Comments</h2>
       <div className={styles.commentProfile}>
         <div className={styles.commentsList}>
-          {localComments.map((comment) => (
-            <div key={comment.id} className={styles.commentBox}>
-              <div className={styles.commentTag}>
-                <div className={styles.nameID}>
-                  <div className={styles.username}>{comment.userName}</div>
-                  {(() => {
-                    let nonStandardRole = null;
-
-                    if (Array.isArray(comment.userRoles)) {
-                      nonStandardRole = comment.userRoles.find(
-                        (role) => role !== "Standard",
-                      );
-                    } else if (
-                      typeof comment.userRoles === "string" &&
-                      comment.userRoles !== "Standard"
-                    ) {
-                      nonStandardRole = comment.userRoles;
-                    }
-
-                    return nonStandardRole ? (
-                      <div className={styles.roleTags}>
-                        {nonStandardRole.toUpperCase()}
-                      </div>
-                    ) : null;
-                  })()}
-                </div>
-                <h4>{comment.created_at.toDateString()}</h4>
-                <div className={styles.commentButtons}>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => handleDelete(comment.id)}
-                  >
-                    <img
-                      src="/x.png"
-                      alt="Delete"
-                      className={styles.deleteIcon}
-                    />
-                  </button>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => handleEdit(comment)}
-                  >
-                    <img
-                      src="/pencil.png"
-                      alt="Delete"
-                      className={styles.deleteIcon}
-                    />
-                  </button>
-                </div>
-              </div>
-              {editingCommentId === comment.id ? (
-                <div className={styles.editWindow}>
-                  <textarea
-                    value={editingText}
-                    onChange={(e) => setEditingText(e.target.value)}
-                    className={styles.textarea}
-                  />
-                  <button onClick={handleSaveEdit}>Save</button>
-                  <button onClick={() => setEditingCommentId(null)}>
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                <p>{comment.text}</p>
-              )}
+          {localComments.length === 0 ? (
+            <div className={styles.noComments}>
+              <h3>No comments yet</h3>
+              <p>Be the first to join the discussion!</p>
             </div>
-          ))}
+          ) : (
+            localComments.map((comment) => (
+              <div key={comment.id} className={styles.commentBox}>
+                <div className={styles.commentTag}>
+                  <div className={styles.nameID}>
+                    <div className={styles.username}>{comment.userName}</div>
+                    {(() => {
+                      let nonStandardRole = null;
+
+                      if (Array.isArray(comment.userRoles)) {
+                        nonStandardRole = comment.userRoles.find(
+                          (role) => role !== "Standard",
+                        );
+                      } else if (
+                        typeof comment.userRoles === "string" &&
+                        comment.userRoles !== "Standard"
+                      ) {
+                        nonStandardRole = comment.userRoles;
+                      }
+
+                      return nonStandardRole ? (
+                        <div className={styles.roleTags}>
+                          {nonStandardRole.toUpperCase()}
+                        </div>
+                      ) : null;
+                    })()}
+                  </div>
+                  <div className={styles.commentDateAndButtons}>
+                    <h4>{comment.created_at.toDateString()}</h4>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => handleDelete(comment.id)}
+                    >
+                      <Image
+                        src="/x.png"
+                        alt="Delete"
+                        width={24}
+                        height={24}
+                        className={styles.deleteIcon}
+                      />
+                    </button>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => handleEdit(comment)}
+                    >
+                      <Image
+                        src="/pencil.png"
+                        alt="Edit"
+                        width={24}
+                        height={24}
+                        className={styles.deleteIcon}
+                      />
+                    </button>
+                  </div>
+                </div>
+                {editingCommentId === comment.id ? (
+                  <div className={styles.editWindow}>
+                    <textarea
+                      value={editingText}
+                      onChange={(e) => setEditingText(e.target.value)}
+                      className={styles.textarea}
+                    />
+                    <button onClick={handleSaveEdit}>Save</button>
+                    <button onClick={() => setEditingCommentId(null)}>
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  <p>{comment.text}</p>
+                )}
+              </div>
+            ))
+          )}
         </div>
 
         <div className={styles.commentInput}>

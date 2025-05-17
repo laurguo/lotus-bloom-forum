@@ -6,18 +6,37 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-export async function getPosts(site) {
+export async function getPosts(site, page = 1, pageSize = 10) {
   try {
     const client = await pool.connect();
-    const result = await client.query(
-      "SELECT * FROM posts WHERE site = $1 ORDER BY created_at DESC",
+    const offset = (page - 1) * pageSize;
+
+    const countResult = await client.query(
+      "SELECT COUNT(*) FROM posts WHERE site = $1",
       [site],
     );
+    const totalPosts = parseInt(countResult.rows[0].count);
+
+    const result = await client.query(
+      "SELECT * FROM posts WHERE site = $1 ORDER BY created_at DESC LIMIT $2 OFFSET $3",
+      [site, pageSize, offset],
+    );
     client.release();
-    return result.rows;
+
+    return {
+      posts: result.rows,
+      totalPosts,
+      totalPages: Math.ceil(totalPosts / pageSize),
+      currentPage: page,
+    };
   } catch (error) {
     console.error("Error fetching posts:", error);
-    return [];
+    return {
+      posts: [],
+      totalPosts: 0,
+      totalPages: 0,
+      currentPage: page,
+    };
   }
 }
 
@@ -84,20 +103,40 @@ export async function deletePost(post_id) {
   }
 }
 
-export async function getComments(postid) {
+export async function getComments(postid, page = 1, pageSize = 10) {
   try {
     const client = await pool.connect();
-    const result = await client.query(
-      "SELECT * FROM comments WHERE post_id = $1 ORDER BY created_at",
+    const offset = (page - 1) * pageSize;
+
+    const countResult = await client.query(
+      "SELECT COUNT(*) FROM comments WHERE post_id = $1",
       [postid],
     );
+    const totalComments = parseInt(countResult.rows[0].count);
+
+    const result = await client.query(
+      "SELECT * FROM comments WHERE post_id = $1 ORDER BY created_at LIMIT $2 OFFSET $3",
+      [postid, pageSize, offset],
+    );
     client.release();
-    return result.rows;
+
+    return {
+      comments: result.rows,
+      totalComments,
+      totalPages: Math.ceil(totalComments / pageSize),
+      currentPage: page,
+    };
   } catch (error) {
-    console.error("Error fetching posts:", error);
-    return [];
+    console.error("Error fetching comments:", error);
+    return {
+      comments: [],
+      totalComments: 0,
+      totalPages: 0,
+      currentPage: page,
+    };
   }
 }
+
 export async function postComments(postid, authorid, text) {
   try {
     const client = await pool.connect();

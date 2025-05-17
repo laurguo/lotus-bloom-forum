@@ -3,11 +3,15 @@ import styles from "./page.module.css";
 import CommentTab from "@/app/components/CommentTab";
 import { getPostById, getComments } from "@/app/actions/db-actions";
 import { getUserDetails } from "@/app/actions/role-actions";
+import Link from "next/link";
 
-export default async function PostPage({ params }) {
+export default async function PostPage({ params, searchParams }) {
   const p = await params;
+  const sp = await searchParams;
   const site = p.site;
   const post_id = p.post_id;
+  const currentPage = Number(sp?.page) || 1;
+  const pageSize = 10;
 
   const post = await getPostById(post_id);
   if (!post) {
@@ -21,11 +25,15 @@ export default async function PostPage({ params }) {
 
   const createdAt = new Date(post.created_at).toLocaleDateString();
 
-  const comments = await getComments(post_id);
+  const {
+    comments,
+    totalPages,
+    currentPage: page,
+  } = await getComments(post_id, currentPage, pageSize);
   const commentsWithName = await Promise.all(
     comments.map(async (comment) => {
       const { name: userName, roles: userRoles } = await getUserDetails(
-        post.author_id,
+        comment.author_id,
       );
       return { ...comment, userName, userRoles };
     }),
@@ -69,7 +77,32 @@ export default async function PostPage({ params }) {
             <p>{post.body}</p>
           </div>
 
-          <CommentTab comments={commentsWithName} postid={post_id} />
+          <div className={styles.commentsSection}>
+            <CommentTab comments={commentsWithName} postid={post_id} />
+
+            {/* Pagination Controls */}
+            <div className={styles.pagination}>
+              {page > 1 && (
+                <Link
+                  href={`/site/${site}/${post_id}?page=${page - 1}`}
+                  className={styles.paginationButton}
+                >
+                  Previous
+                </Link>
+              )}
+              <span className={styles.pageInfo}>
+                Page {page} of {totalPages}
+              </span>
+              {page < totalPages && (
+                <Link
+                  href={`/site/${site}/${post_id}?page=${page + 1}`}
+                  className={styles.paginationButton}
+                >
+                  Next
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
