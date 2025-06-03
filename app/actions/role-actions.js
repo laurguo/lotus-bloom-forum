@@ -3,6 +3,80 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { ManagementClient } from "auth0";
 import { cache } from "react";
+import axios from "axios";
+
+/* Gets a token from Auth0 for deleting roles */
+const getManagementToken = async () => {
+  const response = await axios.post(
+    `https://${process.env.AUTH0_DOMAIN}/oauth/token`,
+    {
+      client_id: process.env.AUTH0_CLIENT_ID,
+      client_secret: process.env.AUTH0_CLIENT_SECRET,
+      audience: `https://${process.env.AUTH0_DOMAIN}/api/v2/`,
+      grant_type: "client_credentials",
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  );
+
+  console.log(response.data);
+  return response.data.access_token;
+};
+
+export async function setUserRole(userId, roleType) {
+  try {
+    const auth0 = new ManagementClient({
+      domain: process.env.AUTH0_DOMAIN,
+      clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+      clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+      scope: "read:users update:users delete:roles",
+    });
+
+    const currentRoles = await auth0.users.getRoles({ id: userId });
+    const roleIds = currentRoles.data.map((role) => role.id);
+
+    if (roleIds.length > 0) {
+      const token = await getManagementToken();
+      console.log("token", token);
+      await axios.delete(
+        `https://${process.env.AUTH0_DOMAIN}/api/v2/users/${userId}/roles`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          data: {
+            roles: roleIds,
+          },
+        },
+      );
+    }
+
+    if (roleType !== "None") {
+      let roleId;
+      if (roleType === "Family Navigator") {
+        roleId = process.env.AUTH0_FAMILY_NAVIGATOR_ROLE_ID;
+      } else if (roleType === "Admin") {
+        roleId = process.env.AUTH0_ADMIN_ROLE_ID;
+      }
+      await auth0.users.assignRoles({ id: userId }, { roles: [roleId] });
+    }
+
+    return {
+      success: true,
+      message: `Successfully assigned ${roleType} role`,
+    };
+  } catch (error) {
+    console.error("Error assigning role:", error);
+    return {
+      success: false,
+      error: "Failed to assign role. Please try again later.",
+    };
+  }
+}
 
 export async function assignRole(user, roleType) {
   // Validate the role type
