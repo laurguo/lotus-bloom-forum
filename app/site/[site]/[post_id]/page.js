@@ -1,9 +1,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import CommentTab from "@/app/components/CommentTab";
-import { getPostById, getComments } from "@/app/actions/db-actions";
 import { getUserDetails, getUserRoles } from "@/app/actions/role-actions";
 import Link from "next/link";
+import {
+  getPostById,
+  getComments,
+  getIfUserLikedPost,
+  getNumLikes,
+} from "@/app/actions/db-actions";
+import LikeButton from "@/app/components/LikeButton";
 import { getSession } from "@auth0/nextjs-auth0";
 
 export default async function PostPage({ params, searchParams }) {
@@ -11,6 +17,17 @@ export default async function PostPage({ params, searchParams }) {
   const sp = await searchParams;
   const site = p.site;
   const post_id = p.post_id;
+  const num_likes = await getNumLikes(post_id);
+
+  // get current user's details
+  const session = await getSession(); // server-side auth
+  const { user } = session;
+  const current_user_roles = await getUserRoles(user);
+  const current_user_id = user?.sub;
+
+  const isLiked = current_user_id
+    ? await getIfUserLikedPost(post_id, current_user_id)
+    : false;
   const currentPage = Number(sp?.page) || 1;
   const pageSize = 10;
 
@@ -40,11 +57,6 @@ export default async function PostPage({ params, searchParams }) {
     }),
   );
 
-  // get current user's details
-  const session = await getSession();
-  const { user } = session;
-  const current_user_roles = await getUserRoles(user);
-
   return (
     <div>
       <div className={styles.pageContainer}>
@@ -59,27 +71,40 @@ export default async function PostPage({ params, searchParams }) {
 
         <div className={styles.flexContainer}>
           <div className={styles.textbox}>
-            <div className={styles.userTag}>
-              <h1>{post.title}</h1>
-
-              <div className={styles.userProfile}>
-                <Image
-                  src={"/default_profile.svg"}
-                  alt="Back"
-                  width={40}
-                  height={40}
-                />
-                <div className={styles.userBox}>
-                  <h1>{authorName} </h1>
-                  {nonStandardRole && (
-                    <div className={styles.roleTags}>
-                      {nonStandardRole.toUpperCase()}
+            <div className={styles.postheader}>
+              <div className={styles.userTag}>
+                <div className={styles.userProfile}>
+                  <Image
+                    src={"/default_profile.svg"}
+                    alt="Back"
+                    width={40}
+                    height={40}
+                  />
+                  <div>
+                    <div className={styles.userNameAndRole}>
+                      <h2>{authorName} </h2>
+                      {nonStandardRole && (
+                        <div className={styles.roleTags}>
+                          {nonStandardRole.toUpperCase()}
+                        </div>
+                      )}
                     </div>
-                  )}
-                  <h2>{createdAt} </h2>
+                    <h3>{createdAt} </h3>
+                  </div>
+                </div>
+
+                <div className={styles.likedisplay}>
+                  <LikeButton
+                    postId={post_id}
+                    isInitiallyLiked={isLiked}
+                    initialLikeCount={num_likes}
+                    current_user_id={current_user_id}
+                  />
                 </div>
               </div>
+              <h1>{post.title}</h1>
             </div>
+
             <p>{post.body}</p>
             {post.blobs.map((blob, index) => (
               <a
