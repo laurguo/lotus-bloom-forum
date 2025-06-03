@@ -52,7 +52,7 @@ export default async function PostPage({ params, searchParams }) {
           <div className={styles.backButton}>
             <a className={styles.backParent} href={`/site/${site}`}>
               <Image src={"/back2.svg"} alt="Back" width={40} height={40} />
-              <h1>Back</h1>
+              Back
             </a>
           </div>
         </div>
@@ -81,6 +81,23 @@ export default async function PostPage({ params, searchParams }) {
               </div>
             </div>
             <p>{post.body}</p>
+            {post.blobs.map((blob, index) => (
+              <a
+                href={blob.url}
+                key={blob.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.imageLink}
+              >
+                <Image
+                  src={blob.url}
+                  alt={`Post Image ${index + 1}`}
+                  width={400}
+                  height={400}
+                  className={styles.postImage}
+                />
+              </a>
+            ))}
           </div>
 
           <div className={styles.commentsSection}>
