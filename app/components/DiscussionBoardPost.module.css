@@ -10,22 +10,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.2s ease-in-out;
-}
-
-.postWrapper:hover {
-  transform: translateY(-2px);
-  cursor: pointer;
 }
 
 .postButton {
   all: unset; /* resets default button styling */
   flex: 1;
   display: flex;
-  flex-direction: row; /* ← change to row */
-  justify-content: space-between; /* evenly spaced */
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   text-align: left;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+.postButton:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.spinnerWrapper {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  pointer-events: none;
 }
 
 .nameID {

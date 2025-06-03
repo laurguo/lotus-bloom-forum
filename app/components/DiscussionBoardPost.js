@@ -1,7 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 import styles from "./DiscussionBoardPost.module.css";
+import Spinner from "./Spinner";
 import DeletePostButton from "./DeletePostButton";
 import EditPostButton from "./EditPostButton";
-import Link from "next/link";
 
 export default function DiscussionBoardPost({
   site,
@@ -13,12 +17,20 @@ export default function DiscussionBoardPost({
   current_user_roles,
   post_id,
 }) {
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
   const nonStandardRole = roles?.find((role) => role !== "Standard");
   const isCurrentUserAdmin = current_user_roles.includes("Admin");
 
+  const handleClick = () => {
+    startTransition(() => {
+      router.push(`/site/${site}/${post_id}`);
+    });
+  };
+
   return (
     <div className={styles.postWrapper}>
-      <Link href={`/site/${site}/${post_id}`} className={styles.postButton}>
+      <button onClick={handleClick} className={styles.postButton}>
         <div className={styles.nameID}>
           <div className={styles.username}>{name}</div>
           {nonStandardRole && (
@@ -28,8 +40,13 @@ export default function DiscussionBoardPost({
           )}
         </div>
         <div className={styles.postTitle}>{title}</div>
-      </Link>
-      {/* Only display edit delete buttons if authorized */}
+        {isPending && (
+          <div className={styles.spinnerWrapper}>
+            <Spinner />
+          </div>
+        )}
+      </button>
+
       {(isCurrentUserAdmin || current_user_id === author_id) && (
         <div className={styles.editdelete}>
           <DeletePostButton
