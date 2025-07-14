@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lotus Bloom Forum
 
-## Getting Started
+> A full-stack web discussion forum to support communication and resource sharing for Oakland-based nonprofit family resource centers.
 
-First, run the development server:
+## 🌟 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This forum was developed as part of a Codebase project in partnership with [Lotus Bloom](https://www.lotusbloomfamily.org/), a nonprofit that supports families across Oakland. The platform helps Lotus Bloom staff and community members share updates, resources, and announcements across multiple physical sites.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Note:** The deployed site is private and accessible only to users at Lotus Bloom.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🧩 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Post creation, editing, and deletion
+- Role-based access control for staff/admins
+- Like and comment functionality
+- Secure login via Auth0
+- Responsive frontend UI with modern design
 
-## Learn More
+## 🛠️ Technologies
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: React, Next.js
+- **Backend**: Neon (PostgreSQL), Vercel Blob
+- **Authentication**: Auth0
+- **Design**: Figma
+- **Deployment**: Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👩‍💻 My Contributions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+I worked as a full-stack developer on the project, focusing on both the user interface and core backend logic for post interactions.
 
-## Deploy on Vercel
+### ✨ Frontend
+- Built the **specific site page** that displays the list of posts
+- Developed the **post creation page**, integrating form validation and submission flow
+- Implemented dynamic updates to post lists based on user interaction (e.g. likes, edits)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🧠 Backend
+- Designed and implemented backend logic for:
+  - **Creating**, **editing**, and **deleting** posts
+  - **Liking** posts (with toggle functionality)
+- Collaborated with team members to integrate database schema with frontend requirements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔐 Deployment
+
+The app is deployed and actively used by Lotus Bloom staff. While the site is publicly accessible, it requires login via email-based authentication. Please note that the platform is intended solely for internal use, and external access is discouraged out of respect for organizational privacy.
+
+## 🧭 Repository Info
+
+This repository is a personal fork of the original team-owned project.  
+Main project owner: [@jiachenofsun](https://github.com/jiachenofsun)
+
+---
